@@ -1,0 +1,24 @@
+/*// notation par etoile*/
+
+    /* Par défaut, une étoile est en gris,
+       avec un padding et un curseur en forme de main. */
+.stars .fa-star {
+    color: gray;
+    cursor: pointer;
+    font-size: 1em;
+}
+/* Si elle porte en plus la classe '.gold', elle sera en jaune. */
+.fa-star.gold {
+    color: #ffdc0f;
+}
+
+/* Le groupe '.stars' positionne les étoiles
+     les unes à côté des autres sans espacements. */
+.stars {
+    display: inline-flex;
+
+/*//justify-content: center;*/
+    font-size: 2em;
+}
+
+
