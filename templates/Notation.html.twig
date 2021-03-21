@@ -3,73 +3,78 @@
     Note
 {% endblock %}
 {% block body %}
-    <div class="section">
-        <div class="full-width has-text-centered is-padding-20">
-            <div class="stars" id="stars">
-                <i class="fa fa-star" id="star1"></i>
-                <i class="fa fa-star" id="star2"></i>
-                <i class="fa fa-star" id="star3"></i>
-                <i class="fa fa-star" id="star4"></i>
-                <i class="fa fa-star" id="star5"></i>
-            </div>
+    <div class="container">
 
-        </div>
+        <div class="section has-text-left has-background-white-bis">
 
-        {{ form_start(note_form) }}
-        {#                        {{ form_row(note_form.value, {label: 'Votre note'}) }}#}
-        {#                    <input id="starnote" name="starnote" type="hidden" value="">#}
-        {#                                {{ form_row(note_form.value) }}#}
-        {{ form_row(note_form.comment, { label: 'Commentaire (facultatif)' }) }}
+            <h3 class="subtitle has-text-primary has-text-weight-bold">
+                Notes:
+            </h3>
 
-
-        <button class="button is-success" type="submit">
-            Noter
-        </button>
-        {{ form_end(note_form) }}
-
-
-    </div>
-
-
-    {% for note in menu.notes %}
-        {# @var note \App\Entity\Note #}
-        <br>
-        <div class="card">
-            <div class="card-content">
-                <strong>
-                    Note:
-                    <span class="has-text-primary">{{ note.value }}/5</span>
-                    <div class="full-width has-text-centered is-padding-20">
-                        <div>
-                            <i class="fa fa-star {{ (note.value >=1) ? ' isgold' : ' isgray' }}" id="star1"></i>
-                            <i class="fa fa-star {{ note.value >=2 ?' isgold' : ' isgray' }}" id="star2"></i>
-                            <i class="fa fa-star {{ note.value >=3 ?' isgold' : ' isgray' }}" id="star3"></i>
-                            <i class="fa fa-star {{ note.value >=4 ?' isgold' : ' isgray' }}" id="star4"></i>
-                            <i class="fa fa-star {{ note.value >=5 ?' isgold' : ' isgray' }}" id="star5"></i>
-                        </div>
-                        {#                    <a href="#">Voir les avis.</a>#}
+            <div class="section">
+                <div class="full-width has-text-centered is-padding-20">
+                    <div class="stars" id="stars">
+                        <i class="fa fa-star" id="star1"></i>
+                        <i class="fa fa-star" id="star2"></i>
+                        <i class="fa fa-star" id="star3"></i>
+                        <i class="fa fa-star" id="star4"></i>
+                        <i class="fa fa-star" id="star5"></i>
                     </div>
-                </strong>
-                <br>
-                {{ note.comment }}
-                <hr>
-                <small>
-                    {% if is_granted('NOTE_DELETE', note) %}
-                        <a href="{{ path('menu_delete_note', {id: note.id}) }}"
-                           class="button is-danger is-small">
-                            <i class="far fa-times-circle"></i>&nbsp;
-                            Supprimer
-                        </a>
-                    {% endif %}
 
-{#                    Par <b>{{ note.user.pseudo }}</b>#}
-                    le <b>{{ note.dateenregistrement|date('d/m/Y') }}</b>
-                    à <b>{{ note.dateenregistrement|date('H:i') }}</b>.
-                </small>
+                </div>
+
+                {{ form_start(note_form) }}
+                {#                        {{ form_row(note_form.value, {label: 'Votre note'}) }}#}
+                {#                    <input id="starnote" name="starnote" type="hidden" value="">#}
+                {#                                {{ form_row(note_form.value) }}#}
+                {{ form_row(note_form.comment, { label: 'Commentaire (facultatif)' }) }}
+
+
+                <button class="button is-success" type="submit">
+                    Noter
+                </button>
+                {{ form_end(note_form) }}
+
+
             </div>
+
+
+            {% for note in note_list %}
+                {# @var note \App\Entity\Note #}
+                <br>
+                <div class="card">
+                    <div class="card-content">
+                        <strong>
+                            Note:
+                            <span class="has-text-primary">{{ note.value }}/5</span>
+                            <div class="full-width has-text-centered is-padding-20">
+                                <div>
+                                    <i class="fa fa-star {{ (note.value >=1) ? ' isgold' : ' isgray' }}" id="star1"></i>
+                                    <i class="fa fa-star {{ note.value >=2 ?' isgold' : ' isgray' }}" id="star2"></i>
+                                    <i class="fa fa-star {{ note.value >=3 ?' isgold' : ' isgray' }}" id="star3"></i>
+                                    <i class="fa fa-star {{ note.value >=4 ?' isgold' : ' isgray' }}" id="star4"></i>
+                                    <i class="fa fa-star {{ note.value >=5 ?' isgold' : ' isgray' }}" id="star5"></i>
+                                </div>
+                                {#                    <a href="#">Voir les avis.</a>#}
+                            </div>
+                        </strong>
+                        <br>
+                        {{ note.comment }}
+                        <hr>
+                        <small>
+                            <a href="{{ path('delete_note', {id: note.id}) }}" class="button is-danger is-small">
+                                <i class="far fa-times-circle"></i>&nbsp;
+                                Supprimer
+                            </a>
+
+                            {#                    Par <b>{{ note.user.pseudo }}</b>#}
+                            le <b>{{ note.dateregister|date('d/m/Y') }}</b>
+                            à <b>{{ note.dateregister|date('H:i') }}</b>.
+                        </small>
+                    </div>
+                </div>
+            {% endfor %}
+
         </div>
-    {% endfor %}
-
-
-
+    </div>>
 {% endblock %}

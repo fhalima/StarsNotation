@@ -6,7 +6,8 @@ use App\Repository\NoteRepository;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * @ORM\Entity(repositoryClass=NoteRepository::class)
+ * @ORM\Entity(repositoryClass="App\Repository\NoteRepository")
+ * @ORM\HasLifecycleCallbacks()
  */
 class Note
 {
@@ -28,9 +29,22 @@ class Note
     private $comment;
 
     /**
-     * @ORM\Column(type="date")
+     * @ORM\Column(type="datetime")
      */
     private $dateregister;
+
+
+    /**
+     * Méthode appelée avant le 1er enregistrement de l'entité
+     * @ORM\PrePersist()
+     */
+    public function prePersist()
+    {
+        // Définir la date de création par défaut
+        if ($this->dateregister === null) {
+            $this->dateregister = new \DateTime();
+        }
+    }
 
     public function getId(): ?int
     {

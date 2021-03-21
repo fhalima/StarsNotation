@@ -2,6 +2,26 @@
 
     /* Par défaut, une étoile est en gris,
        avec un padding et un curseur en forme de main. */
+@import "~@fortawesome/fontawesome-free/css/all.min.css";
+
+
+
+body {
+    font-family: Helvetica, Arial, sans-serif;
+    background-repeat: repeat;
+    background-blend-mode: screen;
+    background-color: White;
+    margin: 0 !important;
+
+}
+.container {
+    margin: 0 auto !important;
+    width: 90% !important;
+    text-align: center;
+    min-height: 100vh !important;
+    padding: 20%;
+}
+
 .stars .fa-star {
     color: gray;
     cursor: pointer;
@@ -21,4 +41,12 @@
     font-size: 2em;
 }
 
-
+.is-padding-20{
+    padding: 20px !important;
+}
+.isgold{
+    color: gold !important;
+}
+.isgray{
+    color: gray !important;
+}

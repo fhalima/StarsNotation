@@ -1,0 +1,23 @@
+{% use "bootstrap_4_horizontal_layout.html.twig" %}
+
+{# Override form_widget_simple block to render bootstrap input-groups #}
+{% block form_widget_simple -%}
+    {%- if input_addon is defined -%}
+        {% set aria_describedby = 'addon-' ~ random() %}
+        {%- set attr = attr|merge({'aria-describedby': aria_describedby}) -%}
+        <div class="input-group">
+    {%- endif -%}
+    {{- parent() -}}
+    {%- if input_addon is defined -%}
+        <div class="input-group-append">
+            <span class="input-group-text" id="{{ aria_describedby }}">{{ input_addon }}</span>
+        </div>
+        </div>
+    {%- endif -%}
+{%- endblock form_widget_simple %}
+
+{# Example of using an input-group with «m²» addon for a specific form field #}
+{% block _project_facadeArea_widget -%}
+    {% set input_addon = 'm²' %}
+    {{ block('form_widget_simple') }}
+{%- endblock %}
