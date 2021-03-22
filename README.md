@@ -10,6 +10,8 @@ composer create-project symfony/skeleton my_project_name
 ```
 
 ####Installer les dépendances 
+
+
 * Installer [NodeJs](#https://nodejs.org/fr/download/)
 
 * Installer et lancer le serveur web de Symfony (sous Windows)
