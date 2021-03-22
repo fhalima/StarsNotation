@@ -27,7 +27,7 @@ class NoteFormType extends AbstractType
                 ]
             ])
             ->add('value', HiddenType::class, [
-//                'value' => '',
+                'attr' =>['value' => 0]
             ]);
     }
 

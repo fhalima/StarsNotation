@@ -23,14 +23,14 @@ for (let i = 1; i <= 5; i++) {
         SetStartsGray(i + 1);
     });
 
-    let note_value = $("#note_form_value").val();
+    // let note_value = $("#note_form_value").val();
 
     $("#star" + i).hover(function () {
             SetStartsGold(i);
             SetStartsGray(i + 1);
         }, function () {
-            SetStartsGold(note_value);
-            SetStartsGray(parseInt(note_value) + 1);
+            SetStartsGold(parseInt($("#note_form_value").val()));
+            SetStartsGray(parseInt($("#note_form_value").val()) + 1);
         }
     );
 }

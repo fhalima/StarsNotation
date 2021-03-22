@@ -9,7 +9,7 @@ Executer la commande :
 composer create-project symfony/skeleton my_project_name
 ```
 
-##Installer les dépendances 
+####Installer les dépendances 
 
 
 * Installer [NodeJs](#https://nodejs.org/fr/download/)
